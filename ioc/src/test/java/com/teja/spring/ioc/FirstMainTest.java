@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 public class FirstMainTest extends TestCase {
 
 	public void testMain() {
-		Assert.assertTrue(true);
+		Assert.assertTrue(false);
 	}
 
 	public void test2(){
