@@ -10,6 +10,6 @@ public class FirstMainTest extends TestCase {
 	}
 
 	public void test2(){
-		Assert.assertEquals(true, true);
+		Assert.assertEquals(true, false);
 	}
 }
