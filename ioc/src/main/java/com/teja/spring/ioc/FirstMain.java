@@ -1,5 +1,7 @@
 package com.teja.spring.ioc;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.teja.spring.ioc.beans.Puma;
@@ -8,6 +10,8 @@ import com.teja.spring.ioc.config.AppConfig;
 
 public class FirstMain {
 
+	private static final Log logger = LogFactory.getLog(FirstMain.class);
+	
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext annCtx = new AnnotationConfigApplicationContext(AppConfig.class);
 		
