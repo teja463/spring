@@ -15,12 +15,15 @@ public class FirstMain {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext annCtx = new AnnotationConfigApplicationContext(AppConfig.class);
 		
-		Shoe shoe = annCtx.getBean("shoe",Shoe.class);
+/*		Shoe shoe = annCtx.getBean("shoe",Shoe.class);
 		shoe.wear();
 		
 		Shoe pumaShoe = annCtx.getBean("pumaShoe",Puma.class);
-		pumaShoe.wear();
+		pumaShoe.wear();*/
 		
+		ShowRoom showRoom = annCtx.getBean("showRoom",ShowRoom.class);
+		showRoom.puma.wear();
+		showRoom.shoe.wear();
 		annCtx.close();
 	}
 }
