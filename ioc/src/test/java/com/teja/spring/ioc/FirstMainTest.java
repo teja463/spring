@@ -19,6 +19,7 @@ public class FirstMainTest {
 	@Test
 	public void test2(){
 		logger.debug("test case 2..");
+		logger.debug("some more text");
 		Assert.assertEquals(true, true);
 	}
 }
