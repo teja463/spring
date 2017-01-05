@@ -12,12 +12,13 @@ public class FirstMainTest {
 	
 	@Test
 	public void testMain() {
-		logger.debug("main test case..");
+		logger.info("main test case..");
 		Assert.assertTrue(true);
 	}
 
 	@Test
 	public void test2(){
+		logger.debug("test case 2..");
 		Assert.assertEquals(true, true);
 	}
 }
