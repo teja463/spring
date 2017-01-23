@@ -7,4 +7,5 @@ import com.hotelbooking.model.Hotel;
 public interface HotelDAO {
 
 	public List<Hotel> showLeastPricedHotels(String city);
+	
 }

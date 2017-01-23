@@ -80,8 +80,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.hotelbooking.model.Hotel</beans:value>
-				<!-- <beans:value>com.mindtree.hotelbooking.model.City</beans:value>
-				<beans:value>com.mindtree.hotelbooking.model.Booking</beans:value> -->
+				<beans:value>com.hotelbooking.model.City</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

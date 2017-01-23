@@ -20,12 +20,12 @@ public class HotelDAOImpl implements HotelDAO{
 	private HibernateTemplate hibernateTemplate;
 	
 	public List<Hotel> showLeastPricedHotels(String city) {
-		logger.info("[ENTRY] DAO: showLeastPricedHotels()");
-		logger.info("city received:---------ddd "+city);
+		logger.info("[ENTRY] showLeastPricedHotels()");
+		logger.info("city received: "+city);
 		List<Hotel> hotels = (List<Hotel>)(List)hibernateTemplate.find("from Hotel where CITY=? order by ROOM_PRICE asc", city);
-		logger.info("hotels :"+hotels);
-		logger.info("[EXIT] DAO: showLeastPricedHotels()");
-		return null;
+		logger.info("[EXIT] showLeastPricedHotels()");
+		return hotels;
 	}
+
 
 }

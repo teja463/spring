@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hotelbooking.dao.CityDAO;
 import com.hotelbooking.dao.HotelDAO;
+import com.hotelbooking.model.City;
 import com.hotelbooking.model.Hotel;
 import com.hotelbooking.service.HotelService;
 
@@ -21,12 +23,21 @@ public class HotelServiceImpl implements HotelService{
 	@Autowired
 	HotelDAO hotelDAO;
 	
+	@Autowired
+	CityDAO cityDAO;
+	
 	@Transactional(readOnly=true,propagation=Propagation.SUPPORTS)
 	public List<Hotel> showLeastPricedHotels(String city) {
-		logger.info("[ENTRY] service : showLeastPricedHotels()");
-		hotelDAO.showLeastPricedHotels(city);
-		logger.info("[EXIT] service : showLeastPricedHotels()");
-		return null;
+		logger.info("[ENTRY]  showLeastPricedHotels()");
+		logger.info("[EXIT] showLeastPricedHotels()");
+		return hotelDAO.showLeastPricedHotels(city);
+	}
+
+	@Transactional(readOnly=true,propagation=Propagation.SUPPORTS)
+	public List<City> getAllCities() {
+		logger.info("[ENTRY]  getAllCities()");
+		logger.info("[EXIT] getAllCities()");
+		return cityDAO.getAllCities();
 	}
 
 }

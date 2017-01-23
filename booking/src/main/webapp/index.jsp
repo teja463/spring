@@ -1,6 +1,13 @@
+<!DOCTYPE html>
 <html>
-<body>
-<h2>Hello World!</h2>
-<%-- <jsp:forward page="/index"></jsp:forward> --%>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@ include file="./WEB-INF/jsp/init.jsp" %>
+</head>
+<body class="container">
+
+<a href="#" role="button" class="btn btn-primary btn-lg btn-block"><spring:message code="book.room" /></a>
+<a href="hotels" role="button" class="btn btn-warning btn-lg btn-block"><spring:message code="view.hotels" /></a>
 </body>
 </html>

@@ -1,15 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
+<%@ include file="../init.jsp" %>
+<script src="/booking/static/js/hotels.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Least priced hotels</title>
 </head>
-<body>
+<body class="container">
 
-Least priced hotels/hotels
-<spring:message code="test.name" />
+<div class="form-group">
+  <label for="sel1"><spring:message code="select.city" /></label>
+  <select class="form-control" id="cities">
+  	<option></option>
+   	<c:forEach items="${cities }" var="city">
+   		<option>${city.name }</option>
+   	</c:forEach>
+  </select>
+</div>
+<div id="citiesTable">
+
+</div>
 </body>
 </html>
