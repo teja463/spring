@@ -1,4 +1,9 @@
-<div class="jumbotron">
-  <h1>Welcome!!</h1>
-  <p>You can go through the below links to explore...</p>
-  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/booking"> <img alt="Home"
+				src="/booking/static/img/logo.png" style="width: 100%; height: 100%;">
+			</a>
+		</div>
+	</div>
+</nav>

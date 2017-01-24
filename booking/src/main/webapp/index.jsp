@@ -7,9 +7,12 @@
 </head>
 <body class="container">
 <%@ include file="./banner.jsp" %>
+
 <a href="room/book" role="button" class="btn btn-primary btn-lg btn-block"><spring:message code="book.room" /></a>
 <a href="hotels" role="button" class="btn btn-warning btn-lg btn-block"><spring:message code="view.hotels" /></a>
 
-</div>
+
+<%@ include file="./footer.jsp" %>
+
 </body>
 </html>

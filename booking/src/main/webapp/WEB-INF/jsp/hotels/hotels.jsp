@@ -10,7 +10,7 @@
 <title>Least priced hotels</title>
 </head>
 <body class="container">
-
+<%@ include file="../../../banner.jsp" %>
 <div class="form-group">
   <label for="sel1"><spring:message code="select.city" /></label>
   <select class="form-control" id="cities">
@@ -21,8 +21,8 @@
   </select>
 </div>
 <div id="citiesTable">
-
 </div>
 <a href="/booking" role="button" class="btn btn-primary btn-lg btn-block"><spring:message code="booking.goto.home" /></a>
+<%@ include file="../../../footer.jsp" %>
 </body>
 </html>

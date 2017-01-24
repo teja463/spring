@@ -12,6 +12,7 @@
 <title><spring:message code="book.room" /></title>
 </head>
 <body class="container">
+<%@ include file="../../../banner.jsp" %>
 	<script>
 		$(function(){
 			$("#checkIn").datepicker({
@@ -85,6 +86,6 @@
 		<input type="submit" value="<spring:message code='booking.book' />" role="button" class="btn btn-primary btn-lg btn-block" />
 		<a href="/booking" role="button" class="btn btn-warning btn-lg btn-block"><spring:message code="booking.cancel" /></a>
 	</form:form>
-
+<%@ include file="../../../footer.jsp" %>
 </body>
 </html>
