@@ -1,7 +1,5 @@
 package com.hotelbooking.controller;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -31,12 +29,6 @@ public class HotelController {
 		logger.info("[ENTRY] showLeastPricedHotels()");
 		
 		List<City> cities = hotelService.getAllCities();
-		Collections.sort(cities, new Comparator<City>() {
-                public int compare(City lhs, City rhs) {
-                    return lhs.getName().compareTo(rhs.getName());
-                }
-            });
-		
 		logger.info("cities received from dao : "+cities);
 		
 		model.addAttribute("cities", cities);
@@ -46,7 +38,7 @@ public class HotelController {
 	
 	@RequestMapping(value="/list")
 	public String getListOfHotels( @RequestParam("city") String city, Model model ){
-		List<Hotel> hotels = hotelService.showLeastPricedHotels(city);
+		List<Hotel> hotels = hotelService.showLeastPricedHotels(city,5);
 		logger.info("hotels received from dao : "+hotels);
 		model.addAttribute("hotels",hotels);
 		return "hotels/hotelList";

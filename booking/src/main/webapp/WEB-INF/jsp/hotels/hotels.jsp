@@ -23,5 +23,6 @@
 <div id="citiesTable">
 
 </div>
+<a href="/booking" role="button" class="btn btn-primary btn-lg btn-block"><spring:message code="booking.goto.home" /></a>
 </body>
 </html>

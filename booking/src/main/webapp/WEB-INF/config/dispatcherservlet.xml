@@ -81,6 +81,7 @@
 			<beans:list>
 				<beans:value>com.hotelbooking.model.Hotel</beans:value>
 				<beans:value>com.hotelbooking.model.City</beans:value>
+				<beans:value>com.hotelbooking.model.BookRoom</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
