@@ -7,5 +7,6 @@
   <modules>
   	<module>ioc</module>
   	<module>mvc</module>
+  	<module>booking</module>
   </modules>
 </project>
