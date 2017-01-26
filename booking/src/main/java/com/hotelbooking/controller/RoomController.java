@@ -65,7 +65,7 @@ private static final Log logger = LogFactory.getLog(HotelController.class);
 		logger.info("[EXIT] processBooking()");
 		boolean isBookingValid = true;
 		if(null!=hotel){
-			isBookingValid = BookRoomHelper.isBookingValid(bookRoom, hotel.getAvailableRooms());
+			isBookingValid = isBookingValid(bookRoom, hotel.getAvailableRooms());
 		}
 		logger.info("is booking valid : "+isBookingValid);
 		if(bindingResult.hasErrors()||!isBookingValid){
@@ -94,5 +94,20 @@ private static final Log logger = LogFactory.getLog(HotelController.class);
 		}
 		
 		
+	}
+	
+	private boolean  isBookingValid(BookRoom bookRoom, int totalRooms) {
+		logger.info("bookRoom.getRoomsBooked() >  totalRooms: "+ (totalRooms >= bookRoom.getRoomsBooked()));
+		if( bookRoom.getRoomsBooked() >totalRooms ){
+			return false;
+		}
+		
+		int bookedRooms = hotelService.isRoomAvailable(bookRoom);
+		logger.info("total rooms booked : "+bookedRooms);
+		if (totalRooms - bookedRooms >= bookRoom.getRoomsBooked()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

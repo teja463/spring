@@ -65,4 +65,10 @@ public class HotelServiceImpl implements HotelService{
 	public int bookRoom(BookRoom bookRoom) {
 		return hotelDAO.bookRoom(bookRoom);
 	}
+
+	public int isRoomAvailable(BookRoom bookRoom) {
+		int roosBooked = hotelDAO.isRoomAvailable(bookRoom);
+		logger.info("number of rooms booked : "+roosBooked);
+		return roosBooked;
+	}
 }

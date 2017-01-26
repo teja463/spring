@@ -2,15 +2,17 @@ package com.hotelbooking.helper;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hotelbooking.model.BookRoom;
+import com.hotelbooking.service.HotelService;
 
 public class BookRoomHelper {
 
+	@Autowired
+	HotelService hotelService;
+	
 	private static final Log logger = LogFactory.getLog(BookRoomHelper.class);
 	
-	public static boolean  isBookingValid(BookRoom bookRoom, int totalRooms) {
-		logger.info("bookRoom.getRoomsBooked() >  totalRooms: "+ (totalRooms >= bookRoom.getRoomsBooked()));
-		return totalRooms >= bookRoom.getRoomsBooked();
-	}
+	
 }

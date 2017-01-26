@@ -15,4 +15,6 @@ public interface HotelService {
 	public Hotel getHotel(String name);
 	
 	public int bookRoom(BookRoom bookRoom);
+	
+	public int isRoomAvailable(BookRoom bookRoom);
 }
