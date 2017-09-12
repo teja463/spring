@@ -2,6 +2,6 @@
 			"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
 	
-	<bean class="com.teja.beans.Bean1" id="bean1" scope="prototype"/>
+	<bean class="com.teja.beans.Bean1" id="bean1" />
 	
 </beans>
