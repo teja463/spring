@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1505213640633_0" label="practice" name="practice">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/booking" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/durgasoft1" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1505214348942_1" label="Window Working Set" name="Aggregate for window 1505214348942"/>
+</workingSetManager>

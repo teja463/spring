@@ -1,0 +1,10 @@
+package com.teja.driver;
+
+import com.teja.beans.Bean1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+	}
+}

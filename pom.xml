@@ -5,8 +5,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-  	<module>ioc</module>
-  	<module>mvc</module>
   	<module>booking</module>
   </modules>
 </project>

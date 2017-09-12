@@ -1,0 +1,5 @@
+<beans >
+	
+	<bean class="com.teja.beans.Bean1" id="bean1" />
+	
+</beans>
