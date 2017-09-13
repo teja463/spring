@@ -9,6 +9,6 @@ public class SetterDIExample {
 		ApplicationContext context = new ClassPathXmlApplicationContext("resources/spring.xml");
 		
 		Bean1 bean = context.getBean("bean1", com.teja.di.Bean1.class);
-		bean.sayHello("Dudeja");
+		bean.sayHello("Teja");
 	}
 }
