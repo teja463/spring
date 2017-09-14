@@ -3,14 +3,15 @@ package com.teja.di;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.teja.di.beans.Bean1;
+import com.teja.di.beans.ConstructorBean;
 
-public class SetterDIExample {
+public class ConstructorExample {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("resources/spring.xml");
+		ConstructorBean bean = context.getBean("constructBean", com.teja.di.beans.ConstructorBean.class);
 		
-		Bean1 bean = context.getBean("bean1", com.teja.di.beans.Bean1.class);
 		bean.sayHello("Teja");
+		
 	}
 }
