@@ -1,0 +1,34 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="dce" class="com.teja.di.beans.DefaultCollectionBean">
+		<property name="names">
+			<list>
+				<value>Teja</value>
+				<value>Pramod</value>
+				<value>Chaitu</value>
+				<value>Imran</value>
+			</list>
+		</property>
+		<property name="engines">
+			<list>
+				<ref bean="e1" />
+				<ref bean="e2" />
+				<ref bean="e3" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="e1" class="com.teja.di.beans.Engine">
+		<property name="modelYear" value="2015" />
+	</bean>
+	
+	<bean id="e2" class="com.teja.di.beans.Engine">
+		<property name="modelYear" value="2014" />
+	</bean>
+	
+	<bean id="e3" class="com.teja.di.beans.Engine">
+		<property name="modelYear" value="2017" />
+	</bean>
+	
+</beans>
