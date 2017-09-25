@@ -16,4 +16,11 @@ public class Car {
 	public void printData(){
 		System.out.println("Car make : "+make+ " Model year : "+engine.getModelYear());
 	}
+
+	@Override
+	public String toString() {
+		return "Car [make=" + make + ", engine=" + engine + "]";
+	}
+	
+	
 }

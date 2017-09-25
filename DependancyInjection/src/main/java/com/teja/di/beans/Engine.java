@@ -11,5 +11,11 @@ public class Engine {
 	public void setModelYear(String modelYear) {
 		this.modelYear = modelYear;
 	}
+
+	@Override
+	public String toString() {
+		return "Engine [modelYear=" + modelYear + "]";
+	}
+
 	
 }
