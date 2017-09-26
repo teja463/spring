@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+	<bean id="engine" class="com.teja.di.beans.Engine">
+		<property name="modelYear" value="2017" />
+	</bean> 
+	
+	<bean id="engine2" class="com.teja.di.beans.Engine">
+		<property name="modelYear" value="2016" />
+	</bean> 
+	
+	<bean id="axb" class="com.teja.di.beans.AutowireXmlBean" autowire="byName"/>
+	
+	
+	<bean id="axb2" class="com.teja.di.beans.AutowireXmlBean" autowire="constructor"/>
+</beans>
