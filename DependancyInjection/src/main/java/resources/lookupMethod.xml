@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+	<bean id="c" class="com.teja.di.beans.ICar">
+		<lookup-method name="getEngine" bean="e1" />
+	</bean>
+	
+	<bean id="b" class="com.teja.di.beans.AbstractBus">
+		<lookup-method name="getEngine" bean="e2" />
+	</bean>
+	
+	<bean id="t" class="com.teja.di.beans.Truck" >
+		<lookup-method name="getEngine" bean="e3" />
+	</bean>
+	
+	<bean id="e1" class="com.teja.di.beans.Engine">
+		<property name="modelYear" value="Car Engine" />
+	</bean>
+	
+	<bean id="e2" class="com.teja.di.beans.Engine">
+		<property name="modelYear" value="Bus Engine" />
+	</bean>
+	
+	<bean id="e3" class="com.teja.di.beans.Engine">
+		<property name="modelYear" value="Truck Engine overrided" />
+	</bean>
+	
+</beans>
