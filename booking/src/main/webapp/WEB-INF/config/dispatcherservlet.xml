@@ -1,6 +1,6 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
@@ -16,29 +16,20 @@
 
 	<!-- tells spring the base package where it will search for the controllers -->
 	<context:component-scan base-package="com.hotelbooking" />
-		
+
 	<tx:annotation-driven />
 
-	<!-- <authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="Deep" password="Deep"
-					authorities="ROLE_USER" />
-				<user name="admin" password="admin"
-					authorities="ROLE_ADMIN" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager> -->
+	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
+		name="Deep" password="Deep" authorities="ROLE_USER" /> <user name="admin" 
+		password="admin" authorities="ROLE_ADMIN" /> </user-service> </authentication-provider> 
+		</authentication-manager> -->
 
-	<!-- <http auto-config="true">
-		<intercept-url pattern="/" access="hasRole('ADMIN')" />
-		<intercept-url pattern="/bookroom.view" access="hasRole('ADMIN')" />
-		<intercept-url pattern="/home.view" access="hasRole('ADMIN')" />
-		<intercept-url pattern="/hotelList.view" access="hasRole('ADMIN')" />
-		<form-login login-page="/login.view"
-			username-parameter="ssoId" password-parameter="password"
-			authentication-failure-url="/login.view" />
-	</http> -->
+	<!-- <http auto-config="true"> <intercept-url pattern="/" access="hasRole('ADMIN')" 
+		/> <intercept-url pattern="/bookroom.view" access="hasRole('ADMIN')" /> <intercept-url 
+		pattern="/home.view" access="hasRole('ADMIN')" /> <intercept-url pattern="/hotelList.view" 
+		access="hasRole('ADMIN')" /> <form-login login-page="/login.view" username-parameter="ssoId" 
+		password-parameter="password" authentication-failure-url="/login.view" /> 
+		</http> -->
 
 
 
@@ -86,15 +77,17 @@
 		</beans:property>
 		<beans:property name="hibernateProperties">
 			<beans:props>
-				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</beans:prop>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect
+				</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
 				<beans:prop key="hibernate.format_sql">true</beans:prop>
 				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
 			</beans:props>
 		</beans:property>
-	</beans:bean> 
-	
-	<beans:bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+	</beans:bean>
+
+	<beans:bean id="hibernateTemplate"
+		class="org.springframework.orm.hibernate4.HibernateTemplate">
 		<beans:constructor-arg ref="sessionFactory" />
 	</beans:bean>
 
