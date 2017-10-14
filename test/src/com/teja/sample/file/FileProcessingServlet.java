@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.teja.sample.listener.FileAsyncListener;
-import com.teja.sample.listener.FileProcessingThread;
 
 /**
  * Servlet implementation class FileProcessingServlet
