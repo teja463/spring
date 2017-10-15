@@ -35,9 +35,8 @@ public class FileProcessingServlet extends HttpServlet {
 		Long start = System.currentTimeMillis();
 		
 		AsyncContext asyncContext = request.startAsync();
-		request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
 		asyncContext.addListener(new FileAsyncListener());
-//		asyncContext.setTimeout(1000);
+		asyncContext.setTimeout(1000);
 		
 		ExecutorService executor = (ExecutorService) request.getServletContext().getAttribute("executor");
 		System.out.println(executor);

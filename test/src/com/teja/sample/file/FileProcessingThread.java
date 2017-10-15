@@ -23,27 +23,30 @@ public class FileProcessingThread implements Runnable {
 	public void run() {
 		Long start = System.currentTimeMillis();
 		HttpServletRequest request = (HttpServletRequest) context.getRequest();
-		HttpServletResponse response = (HttpServletResponse) context.getResponse();
+//		HttpServletResponse response = (HttpServletResponse) context.getResponse();
 		PrintWriter pw = null;
 		try {
 			InputStream in = request.getPart("file").getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			if(response!=null){
-				pw = response.getWriter();
-				String line = br.readLine();
-				while (line != null) {
+//			if(response!=null){
+			String line = br.readLine();
+			while (line != null) {
+				HttpServletResponse response = (HttpServletResponse) context.getResponse();
+				if(null!=response){
+					pw = response.getWriter();
 					pw.write(line + "\n");
+					pw.flush();
 					line = br.readLine();
-//					response.flushBuffer();
-					if(null!=pw)pw.flush();
 				}
+				Thread.sleep(200);
 			}
+//			}
 			System.out.println("calling async complete");
-			context.complete();
-		} catch (IOException | ServletException e) {
+		} catch ( IOException | ServletException | InterruptedException e) {
 			System.out.println("error");
 			e.printStackTrace();
 		} finally {
+			context.complete();
 		}
 		System.out.println("Total time for file processing: "+(System.currentTimeMillis()-start));
 	}

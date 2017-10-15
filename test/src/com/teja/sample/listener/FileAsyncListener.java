@@ -17,6 +17,7 @@ public class FileAsyncListener implements AsyncListener{
 	public void onError(AsyncEvent event) throws IOException {
 		ServletResponse response = event.getAsyncContext().getResponse();
 		response.getWriter().write("Error processing");
+		event.getAsyncContext().complete();
 	}
 
 	@Override
