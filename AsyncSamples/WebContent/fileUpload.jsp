@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form method="POST" action="/test/FileProcessingServlet" enctype="multipart/form-data">
+	<form method="POST" action="/AsyncSamples/FileProcessingServlet" enctype="multipart/form-data">
 		<input type="file" name="file" />
 		<input type="submit"/>
 	</form>
