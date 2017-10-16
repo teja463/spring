@@ -41,13 +41,12 @@ public class FileProcessingThread implements Runnable {
 				Thread.sleep(200);
 			}
 //			}
-			System.out.println("calling async complete");
-		} catch ( IOException | ServletException | InterruptedException e) {
+			System.out.println("calling async complete from file processing thread");
+			context.complete();
+		} catch ( IOException | ServletException | InterruptedException| IllegalStateException  e) {
 			System.out.println("error");
 			e.printStackTrace();
-		} finally {
-			context.complete();
-		}
+		} 
 		System.out.println("Total time for file processing: "+(System.currentTimeMillis()-start));
 	}
 

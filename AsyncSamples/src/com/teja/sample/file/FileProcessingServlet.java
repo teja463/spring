@@ -34,17 +34,18 @@ public class FileProcessingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Long start = System.currentTimeMillis();
 		
+		log("Started by: "+Thread.currentThread().getName());
 		AsyncContext asyncContext = request.startAsync();
 		asyncContext.addListener(new FileAsyncListener());
 		asyncContext.setTimeout(1000);
 		
 		ExecutorService executor = (ExecutorService) request.getServletContext().getAttribute("executor");
-		System.out.println(executor);
+		log(executor.toString());
 		executor.execute(new FileProcessingThread(asyncContext));
-		System.out.println(executor);
+		log(executor.toString());
 		
 		Long end = System.currentTimeMillis();
-		System.out.println("Total time: "+(end-start));
+		log("Total time: "+(end-start));
 	}
 
 	/**
