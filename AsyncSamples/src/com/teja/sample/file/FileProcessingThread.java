@@ -30,6 +30,7 @@ public class FileProcessingThread implements Runnable {
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 //			if(response!=null){
 			String line = br.readLine();
+			
 			while (line != null) {
 				HttpServletResponse response = (HttpServletResponse) context.getResponse();
 				if(null!=response){
@@ -38,8 +39,9 @@ public class FileProcessingThread implements Runnable {
 					pw.flush();
 					line = br.readLine();
 				}
-				Thread.sleep(200);
+				Thread.sleep(100);
 			}
+			
 //			}
 			System.out.println("calling async complete from file processing thread");
 			context.complete();

@@ -37,7 +37,7 @@ public class FileProcessingServlet extends HttpServlet {
 		log("Started by: "+Thread.currentThread().getName());
 		AsyncContext asyncContext = request.startAsync();
 		asyncContext.addListener(new FileAsyncListener());
-		asyncContext.setTimeout(1000);
+//		asyncContext.setTimeout(1000);
 		
 		ExecutorService executor = (ExecutorService) request.getServletContext().getAttribute("executor");
 		log(executor.toString());
