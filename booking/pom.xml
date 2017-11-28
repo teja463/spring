@@ -138,9 +138,9 @@
 
 	</dependencies>
 	<build>
-		<finalName>ROOT</finalName>
+		<finalName>booking</finalName>
 	</build>
-	<profiles>
+	<!-- <profiles>
 		<profile>
 			<id>openshift</id>
 			<build>
@@ -159,5 +159,5 @@
 				</plugins>
 			</build>
 		</profile>
-	</profiles>
+	</profiles> -->
 </project>

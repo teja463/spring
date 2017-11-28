@@ -13,3 +13,7 @@ hs_err_pid*
 
 .*
 !/.gitignore
+/RemoteSystemsTempFiles/
+/Servers/
+/.metadata/
+/.recommenders/
