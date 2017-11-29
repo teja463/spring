@@ -10,7 +10,7 @@
 
 <form action="./body/request" method="post">
 	<p>
-		Name: <input type="text" value="" />
+		Name: <input type="text" value="" name="name" />
 	</p>
 	<p>
 		<input type="submit" />
