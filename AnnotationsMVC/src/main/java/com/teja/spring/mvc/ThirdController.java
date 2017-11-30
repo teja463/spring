@@ -1,15 +1,17 @@
 package com.teja.spring.mvc;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 
-@Controller
-@RequestMapping("/third")
+@Component
 public class ThirdController implements IThirdController {
 
-	@RequestMapping(method=RequestMethod.GET)
 	public String third() {
+		return "third";
+	}
+
+	public String pathDemo(@PathVariable String key) {
+		System.out.println("Got here.. "+key);
 		return "third";
 	}
 	

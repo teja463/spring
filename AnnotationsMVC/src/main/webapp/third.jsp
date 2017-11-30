@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>Third jsp</h3>
+<h3>Third jsp..</h3>
+<h3>Key: ${key }</h3>
 </body>
 </html>
