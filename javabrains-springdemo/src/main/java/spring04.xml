@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		">
+
+	<bean id="triangle" class="site.tejap.spring.beans.Triangle03">
+		<property name="pointA" ref="pointA" />
+		<property name="pointB" ref="secondPoint" />
+		<property name="pointC">
+			<bean id="pointA" class="site.tejap.spring.beans.Point">
+				<property name="x" value="90" />
+				<property name="y" value="90" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="pointA" class="site.tejap.spring.beans.Point">
+		<property name="x" value="20" />
+		<property name="y" value="60" />
+	</bean>
+
+	<bean id="pointB" class="site.tejap.spring.beans.Point" name="secondPoint">
+		<property name="x" value="45" />
+		<property name="y" value="45" />
+	</bean>
+
+
+</beans>
