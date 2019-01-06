@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		">
+
+	<bean id="triangle" class="site.tejap.spring.beans.Triangle09" >
+		<property name="type" value="${triangle.type}" />
+	</bean>
+
+	<bean id="triangle2" class="site.tejap.spring.beans.Triangle09" >
+		<property name="type" value="${triangle2.type}" />
+	</bean>
+
+	<bean class="site.tejap.spring.ext.MyBeanPostProcessor" />
+	<bean class="site.tejap.spring.ext.MyBeanFactoryPostProcessor" />
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="triangle09.properties" />
+	</bean>
+</beans>
