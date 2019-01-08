@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd				
+		">
+	
+	<!-- This is the normal DataSource class to replace our DriverManager.getConn and CLass.forName in all dao classes -->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driver.class}" />
+		<property name="url" value="${db.driver.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean> -->
+	
+	<!-- If you want to use connection pooling use below data source else use above normal DriverManagerDataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.driver.class}" />
+		<property name="url" value="${db.driver.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		<property name="initialSize" value="${db.pool.intialsize}" />
+		<property name="maxActive" value="${db.pool.maxactive}" />
+	</bean>
+	
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+		<property name="location" value="db.conn.properties" />
+	</bean>
+	
+	<context:annotation-config />
+	<context:component-scan base-package="site.tejap.spring"></context:component-scan>
+	
+</beans>
