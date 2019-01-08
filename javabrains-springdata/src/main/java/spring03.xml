@@ -7,14 +7,15 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd				
 		">
 	
-	<!-- This is the normal DataSource class to replace our DriverManager.getConn and CLass.forName in all dao classes -->
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- If you want to use connection pooling use below data source else use above normal DriverManagerDataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${db.driver.class}" />
 		<property name="url" value="${db.driver.url}" />
 		<property name="username" value="${db.username}" />
 		<property name="password" value="${db.password}" />
+		<property name="initialSize" value="${db.pool.intialsize}" />
+		<property name="maxActive" value="${db.pool.maxactive}" />
 	</bean>
-	
 	
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
