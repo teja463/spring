@@ -6,6 +6,16 @@ public class Circle {
 	
 	private int radius;
 
+	public Circle(int id, int radius) {
+		super();
+		this.id = id;
+		this.radius = radius;
+	}
+	
+	public Circle(){
+		
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -13,6 +23,8 @@ public class Circle {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	
 
 	public int getRadius() {
 		return radius;
@@ -24,9 +36,9 @@ public class Circle {
 
 	@Override
 	public String toString() {
-		return "Circle [id=" + id + "]";
+		return "Circle [id=" + id + ", radius=" + radius + "]";
 	}
-	
+
 	
 	
 }
