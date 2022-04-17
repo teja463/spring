@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+
+  currency-exchange-service:
+    image: teja463/currency-exchange-service:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - 8000:8000
+    networks:
+      - currency-network
+    depends_on:
+      - spring-eureka-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://spring-eureka-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+  
+  currency-conversion-service:
+    image: teja463/currency-conversion-service:0.0.1-SNAPSHOT
+    ports:
+      - 8100:8100
+    networks:
+      - currency-network
+    depends_on:
+      - spring-eureka-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://spring-eureka-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+
+  api-gateway:
+    image: teja463/spring-cloud-api-gateway:0.0.1-SNAPSHOT
+    ports:
+      - 8765:8765
+    networks:
+      - currency-network
+    depends_on:
+      - spring-eureka-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://spring-eureka-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+
+  spring-eureka-server:
+    image: teja463/spring-eureka-server:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - 8761:8761
+    networks:
+      - currency-network
+
+  zipkin-server:
+    image: openzipkin/zipkin:2.23
+    mem_limit: 300m
+    ports:
+      - 9411:9411
+    networks:
+      - currency-network
+
+networks:
+  currency-network:
