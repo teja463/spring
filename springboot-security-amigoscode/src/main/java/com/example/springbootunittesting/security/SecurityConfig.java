@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,15 +19,11 @@ import static com.example.springbootunittesting.security.ApplicationUserRoles.*;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Override
-    public UserDetailsService userDetailsServiceBean() throws Exception {
-        return super.userDetailsServiceBean();
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -36,13 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "index")
                 .permitAll()
                 .and()
-                .authorizeRequests()
-                .antMatchers("/students")
-                .hasRole(STUDENT.name())
-                .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/mgmt/students").hasAuthority(STUDENT_WRITE.getPermission())
-                .and()
+//                .authorizeRequests()
+//                .antMatchers("/students")
+//                .hasRole(STUDENT.name()) // Moved to method level annoation based
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers(HttpMethod.POST, "/mgmt/students").hasAuthority(STUDENT_WRITE.getPermission())
+//                .and()
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
