@@ -1,9 +1,11 @@
 package com.example.springbootunittesting.security;
 
+import com.example.springbootunittesting.svc.AppUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,8 +24,18 @@ import static com.example.springbootunittesting.security.ApplicationUserRoles.*;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final AppUserDetailsService appUserDetailsService;
+    private final PasswordEncoder passwordEncoder;
+
+    public SecurityConfig(AppUserDetailsService appUserDetailsService, PasswordEncoder passwordEncoder){
+        this.appUserDetailsService = appUserDetailsService;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder);
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -55,27 +67,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Bean
+        // Use for Inmemory based UserDetails Service
+   /* @Bean
     public InMemoryUserDetailsManager userDetails() {
         UserDetails teja = User.builder()
                 .username("student")
-                .password(passwordEncoder.encode("student"))
+                .password(passwordEncoder.encode("test"))
                 .authorities(STUDENT.getAuthorities())
 //                .roles(STUDENT.name())
                 .build();
         UserDetails admin = User.builder()
                 .username("admin")
-                .password(passwordEncoder.encode("admin"))
+                .password(passwordEncoder.encode("test"))
                 .authorities(ADMIN.getAuthorities())
 //                .roles(ADMIN.toString())
                 .build();
         UserDetails tom = User.builder()
                 .username("admin_trainee")
-                .password(passwordEncoder.encode("admin_trainee"))
+                .password(passwordEncoder.encode("test"))
                 .authorities(ADMIN_TRAINEE.getAuthorities())
 //                .roles(ADMIN_TRAINEE.toString())
                 .build();
         InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager(teja, admin, tom);
         return inMemoryUserDetailsManager;
-    }
+    }*/
 }
