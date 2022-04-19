@@ -20,7 +20,7 @@ public class StudentController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_STUDENT')")
+    @PreAuthorize("hasRole('STUDENT')")
     public List<Reservation> getAll(){
         return reservationRepository.findAll();
     }
