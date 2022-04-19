@@ -33,9 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "index")
                 .permitAll()
                 .and()
+                // Moved to method level annoation based
 //                .authorizeRequests()
 //                .antMatchers("/students")
-//                .hasRole(STUDENT.name()) // Moved to method level annoation based
+//                .hasRole(STUDENT.name())
 //                .and()
 //                .authorizeRequests()
 //                .antMatchers(HttpMethod.POST, "/mgmt/students").hasAuthority(STUDENT_WRITE.getPermission())
@@ -45,6 +46,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .httpBasic();
+                // For Form Based Login
+//                .and()
+//                .formLogin()
+//                .loginPage("/mylogin")
+//                .permitAll()
+//                .loginProcessingUrl("/myloginurl").permitAll();
     }
 
 
