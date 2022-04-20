@@ -1,23 +1,14 @@
 package com.example.springbootunittesting.security;
 
 import com.example.springbootunittesting.svc.AppUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
-import static com.example.springbootunittesting.security.ApplicationUserPermissions.*;
-import static com.example.springbootunittesting.security.ApplicationUserRoles.*;
 
 @Configuration
 @EnableWebSecurity
@@ -27,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final AppUserDetailsService appUserDetailsService;
     private final PasswordEncoder passwordEncoder;
 
-    public SecurityConfig(AppUserDetailsService appUserDetailsService, PasswordEncoder passwordEncoder){
+    public SecurityConfig(AppUserDetailsService appUserDetailsService, PasswordEncoder passwordEncoder) {
         this.appUserDetailsService = appUserDetailsService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -41,6 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
+                .addFilterAfter(new JwtTokenVerificationFilter(), JwtUsernameAndPasswordAuthenticationFilter.class)
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 .authorizeRequests()
                 .antMatchers("/", "index")
                 .permitAll()
@@ -55,10 +51,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
                 .authorizeRequests()
                 .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic();
-                // For Form Based Login
+                .authenticated();
+
+        // For HTTP Basic Based Login
+//                .and()
+//                .httpBasic();
+
+        // For Form Based Login
 //                .and()
 //                .formLogin()
 //                .loginPage("/mylogin")
@@ -67,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-        // Use for Inmemory based UserDetails Service
+    // Use for Inmemory based UserDetails Service
    /* @Bean
     public InMemoryUserDetailsManager userDetails() {
         UserDetails teja = User.builder()
