@@ -1,0 +1,26 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: fffb52f3e7f8b9067a8d
+            clientSecret:
+          myokta:
+            clientId: 0oa4rrbr3tGqH4JEZ5d7
+            clientSecret:
+            authorization-grant-type: authorization_code
+            redirect_uri: http://localhost:8080/login/oauth2/code/myokta
+            scope: openid
+        provider:
+          myokta:
+            authorization-uri: https://dev-13070579.okta.com/oauth2/default/v1/authorize
+            token-uri: https://dev-13070579.okta.com/oauth2/default/v1/token
+#            user-info-uri: https://logindev.rockwellcollins.com/idp/userinfo.openid
+            user-name-attribute: sub
+            jwk-set-uri: https://dev-13070579.okta.com/oauth2/default/v1/keys
