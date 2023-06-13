@@ -37,18 +37,23 @@ public class StudentController {
         return ResponseEntity.ok(studentRepository.getStudentCustomFields());
     }
 
-    @GetMapping("/interface")
-    public ResponseEntity<List<StudentInterface>> getStudents_Interface(){
-        return ResponseEntity.ok(studentRepository.getStudentInterface());
+    @GetMapping("/native")
+    public ResponseEntity<List<StudentInterface>> getStudentsInterface(){
+        return ResponseEntity.ok(studentRepository.getStudentNativeInterface());
+    }
+
+    @GetMapping("/native-all")
+    public ResponseEntity<List<Student>> getStudentsNativeAll(){
+        return ResponseEntity.ok(studentRepository.getStudentNativeAll());
     }
 
     @GetMapping("/dto")
-    public ResponseEntity<List<StudentDTO>> getStudents_DTO(){
+    public ResponseEntity<List<StudentDTO>> getStudentsDTO(){
         return ResponseEntity.ok(studentRepository.getStudentDTO());
     }
 
     @GetMapping("/record")
-    public ResponseEntity<List<StudentRecord>> getStudents_Record(){
+    public ResponseEntity<List<StudentRecord>> getStudentsRecord(){
         return ResponseEntity.ok(studentRepository.getStudentRecord());
     }
 

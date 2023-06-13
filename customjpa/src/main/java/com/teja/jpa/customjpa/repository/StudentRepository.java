@@ -15,7 +15,10 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     public List<Student> getStudentCustomFields();
 
     @Query(value = "select s.id, s.first_name as firstName, s.email from student s", nativeQuery = true)
-    public List<StudentInterface> getStudentInterface();
+    public List<StudentInterface> getStudentNativeInterface();
+
+    @Query(value = "select * from student", nativeQuery = true)
+    public List<Student> getStudentNativeAll();
 
     @Query("select new com.teja.jpa.customjpa.dto.StudentRecord(s.id, s.firstName,s.totalMarks) from Student s")
     public List<StudentRecord> getStudentRecord();

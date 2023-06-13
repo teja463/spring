@@ -12,6 +12,10 @@ import javax.validation.constraints.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@NamedQueries({
+        @NamedQuery(name="findByEmail",query="Select s from Student s where s.email = :email"),
+        @NamedQuery(name="findByFirstName",query="Select s from Student s where s.firstName = :firstName")
+})
 public class Student {
 
     public Student(Long id, String firstName, String email) {

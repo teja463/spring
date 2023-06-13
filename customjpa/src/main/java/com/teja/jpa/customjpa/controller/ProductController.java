@@ -14,12 +14,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-public class ProdcutController {
+public class ProductController {
 
     private CustomerRepository customerRepository;
 
-    public ProdcutController(CustomerRepository customerRepository) {
+    public ProductController(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
+    }
+
+    @GetMapping
+    public List<CustomerProduct> findAllProducts(){
+        return customerRepository.findAllProducts();
     }
 
     @PostMapping("/{id}")
@@ -34,9 +39,5 @@ public class ProdcutController {
         customerRepository.save(customer);
     }
 
-    @GetMapping
-    public List<CustomerProduct> findAllProducts(){
-        return customerRepository.findAllProducts();
-    }
 
 }
