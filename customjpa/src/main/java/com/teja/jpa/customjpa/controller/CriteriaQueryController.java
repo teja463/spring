@@ -1,6 +1,9 @@
 package com.teja.jpa.customjpa.controller;
 
+import com.teja.jpa.customjpa.dto.EmployeeDTO;
 import com.teja.jpa.customjpa.dto.StudentInfo;
+import com.teja.jpa.customjpa.entity.Departments;
+import com.teja.jpa.customjpa.entity.Employees;
 import com.teja.jpa.customjpa.entity.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -89,6 +92,17 @@ public class CriteriaQueryController {
 
         List<Student> resultList = entityManager.createQuery(criteriaQuery).getResultList();
         return resultList;
+    }
 
+    @GetMapping("/join")
+    public List<EmployeeDTO> getEmpDeptCriteria(){
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<EmployeeDTO> criteriaQuery = criteriaBuilder.createQuery(EmployeeDTO.class);
+        Root<Employees> root = criteriaQuery.from(Employees.class);
+        Join<Employees, Departments> departments = root.join("departments");
+        criteriaQuery.select(criteriaBuilder.construct(EmployeeDTO.class,root.get("empNo"), root.get("firstName"), departments.get("deptName")));
+        criteriaQuery.where(criteriaBuilder.equal(departments.get("deptName"), "Finance"));
+        List<EmployeeDTO> resultList = entityManager.createQuery(criteriaQuery).getResultList();
+        return resultList;
     }
 }
