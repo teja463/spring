@@ -1,5 +1,6 @@
 package com.teja.jpa.customjpa.controller;
 
+import com.teja.jpa.customjpa.dto.DeptEmpCount;
 import com.teja.jpa.customjpa.dto.EmployeeDTO;
 import com.teja.jpa.customjpa.dto.StudentInfo;
 import com.teja.jpa.customjpa.entity.Departments;
@@ -105,4 +106,19 @@ public class CriteriaQueryController {
         List<EmployeeDTO> resultList = entityManager.createQuery(criteriaQuery).getResultList();
         return resultList;
     }
+
+    @GetMapping("/groupby")
+    public List<DeptEmpCount> groupBy(){
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<DeptEmpCount> criteriaQuery = criteriaBuilder.createQuery(DeptEmpCount.class);
+        Root<Employees> root = criteriaQuery.from(Employees.class);
+        Join<Employees, Departments> departments = root.join("departments");
+        Expression<Long> empCount = criteriaBuilder.count(root.get("empNo"));
+        criteriaQuery.select(criteriaBuilder.construct(DeptEmpCount.class, departments.get("deptName"), empCount.alias("empCount")));
+        criteriaQuery.groupBy(departments.get("deptName"));
+        criteriaQuery.orderBy(criteriaBuilder.asc(empCount));
+        List<DeptEmpCount> resultList = entityManager.createQuery(criteriaQuery).getResultList();
+        return resultList;
+    }
+
 }

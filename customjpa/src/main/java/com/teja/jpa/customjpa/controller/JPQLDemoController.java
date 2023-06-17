@@ -1,6 +1,7 @@
 package com.teja.jpa.customjpa.controller;
 
 import com.teja.jpa.customjpa.dto.CustomerProduct;
+import com.teja.jpa.customjpa.dto.DeptEmpCount;
 import com.teja.jpa.customjpa.entity.Customer;
 import com.teja.jpa.customjpa.entity.Product;
 import com.teja.jpa.customjpa.entity.Student;
@@ -64,4 +65,12 @@ public class JPQLDemoController {
         List<CustomerProduct> customers = query.getResultList();
         return ResponseEntity.ok(customers);
     }
+
+    @GetMapping("/groupby")
+    public ResponseEntity<List<DeptEmpCount>> groupBy(){
+        TypedQuery<DeptEmpCount> query = entityManager.createQuery("Select new com.teja.jpa.customjpa.dto.DeptEmpCount(d.deptName, count(e.empNo) as empCount) from Employees e join e.departments d group by d.deptName order by empCount", DeptEmpCount.class);
+        List<DeptEmpCount> customers = query.getResultList();
+        return ResponseEntity.ok(customers);
+    }
+
 }
