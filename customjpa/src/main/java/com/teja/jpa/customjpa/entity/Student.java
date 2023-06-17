@@ -24,6 +24,11 @@ public class Student {
         this.email = email;
     }
 
+    public Student(String firstName, int totalMarks){
+        this.firstName = firstName;
+        this.totalMarks = totalMarks;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
