@@ -1,11 +1,13 @@
 package com.teja.jpa.customjpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +21,8 @@ public class Employees {
     @Id
     private Integer empNo;
 
-    private Date birthDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM YYYY")
+    private LocalDate birthDate;
 
     private String firstName;
 
@@ -27,7 +30,8 @@ public class Employees {
 
     private String gender;
 
-    private Date hireDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM YYYY h:mm a")
+    private LocalDateTime hireDate;
 
     @ManyToMany
     @JoinTable(name="dept_emp",

@@ -35,9 +35,6 @@ public class JPQLDemoController {
 
     @GetMapping("/named-query")
     public ResponseEntity<Student> namedQuery(){
-       /* TypedQuery<Student> query = entityManager.createNamedQuery("findByEmail", Student.class);
-        query.setParameter("email", "teja@gmail.com");*/
-
         TypedQuery<Student> query = entityManager.createNamedQuery("findByFirstName", Student.class);
         query.setParameter("firstName", "Havish");
 
