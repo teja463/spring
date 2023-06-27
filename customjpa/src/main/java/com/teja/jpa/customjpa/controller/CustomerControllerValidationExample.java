@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/customers")
-public class CustomerController {
+public class CustomerControllerValidationExample {
 
     private final CustomerRepository customerRepository;
     private final CustomerValidator customerValidator;
@@ -23,7 +23,8 @@ public class CustomerController {
     private void binder(WebDataBinder binder){
         binder.addValidators(customerValidator);
     }
-    public CustomerController(CustomerRepository customerRepository, CustomerValidator customerValidator) {
+
+    public CustomerControllerValidationExample(CustomerRepository customerRepository, CustomerValidator customerValidator) {
         this.customerRepository = customerRepository;
         this.customerValidator = customerValidator;
     }
