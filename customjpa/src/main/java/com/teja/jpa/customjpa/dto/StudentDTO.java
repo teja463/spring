@@ -11,13 +11,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class StudentDTO implements Serializable {
 
-    public StudentDTO(Long id, String firstName, String email) {
-        this.id = id;
+    public StudentDTO(Long studentId, String firstName, String email) {
+        this.studentId = studentId;
         this.firstName = firstName;
         this.email = email;
     }
 
-    private Long id;
+    private Long studentId;
     private String firstName;
     private String email;
 }
