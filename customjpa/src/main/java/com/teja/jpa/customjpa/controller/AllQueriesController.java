@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @RestController
@@ -18,9 +20,12 @@ import java.util.List;
 public class AllQueriesController {
 
     private StudentRepository studentRepository;
+    private EntityManager entityManager;
 
-    public AllQueriesController(StudentRepository studentRepository) {
+
+    public AllQueriesController(StudentRepository studentRepository, EntityManager entityManager) {
         this.studentRepository = studentRepository;
+        this.entityManager = entityManager;
     }
 
     @GetMapping
@@ -45,7 +50,9 @@ public class AllQueriesController {
 
     @GetMapping("/native-mapping")
     public ResponseEntity<List<StudentDTO>> getStudentsNativeMapping() {
-        return null;
+        TypedQuery<StudentDTO> namedQuery = entityManager.createNamedQuery("Student.studentNative", StudentDTO.class);
+        List<StudentDTO> resultList = namedQuery.getResultList();
+        return ResponseEntity.ok(resultList);
     }
 
     @GetMapping("/dto")

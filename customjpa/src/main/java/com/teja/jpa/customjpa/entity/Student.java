@@ -1,5 +1,6 @@
 package com.teja.jpa.customjpa.entity;
 
+import com.teja.jpa.customjpa.dto.StudentDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,19 @@ import javax.validation.constraints.*;
 @NamedQueries({
         @NamedQuery(name="findByEmail",query="Select s from Student s where s.email = :email"),
         @NamedQuery(name="findByFirstName",query="Select s from Student s where s.firstName = :firstName")
+})
+@NamedNativeQuery(name="Student.studentNative", query = "select s.id as studentId, s.first_name as firstName, s.email as email from student s", resultSetMapping = "StudentNativeMapping")
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name="StudentNativeMapping",classes = {
+                @ConstructorResult(
+                        targetClass = StudentDTO.class,
+                        columns = {
+                                @ColumnResult(name="studentId", type = Long.class),
+                                @ColumnResult(name="firstName"),
+                                @ColumnResult(name="email")
+                        }
+                )
+        })
 })
 public class Student {
 
