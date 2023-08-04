@@ -1,9 +1,7 @@
-package com.example.springbootunittesting.security;
+package com.teja.springboot.security.security;
 
-import com.example.springbootunittesting.model.AppLoginRequest;
-import com.example.springbootunittesting.model.AppUser;
+import com.teja.springboot.security.model.AppLoginRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.util.Date;
 
 public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -43,7 +40,7 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        System.out.println(authResult);
+        logger.info(authResult);
         String key = "secret5k@4534foradsf";
         String token = Jwts.builder()
                 .setSubject(authResult.getName())

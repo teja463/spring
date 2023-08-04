@@ -1,7 +1,7 @@
-package com.example.springbootunittesting.controller;
+package com.teja.springboot.security.controller;
 
-import com.example.springbootunittesting.model.Reservation;
-import com.example.springbootunittesting.repos.ReservationRepository;
+import com.teja.springboot.security.model.Reservation;
+import com.teja.springboot.security.repos.ReservationRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.example.springbootunittesting.config;
+package com.teja.springboot.security.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -20,13 +20,13 @@ public class PersistentConfig {
 
     @Bean(name = "dataSource")
     public DataSource dataSource() {
-        return DataSourceBuilder.create().username("root").password("root").url("jdbc:mysql://localhost:3306/unit-testing").build();
+        return DataSourceBuilder.create().username("root").password("root").url("jdbc:mysql://localhost:3306/spring-security").build();
     }
 
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, @Qualifier("dataSource") DataSource dataSource) {
         Map<String, Object> properties = new HashMap<>();
-        return builder.dataSource(dataSource).packages("com.example.springbootunittesting").build();
+        return builder.dataSource(dataSource).packages("com.teja.springboot.security").build();
     }
 
     @Bean(name = "transactionManager")

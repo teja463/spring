@@ -1,4 +1,4 @@
-package com.example.springbootunittesting.security;
+package com.teja.springboot.security.security;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.example.springbootunittesting.security.ApplicationUserPermissions.*;
+import static com.teja.springboot.security.security.ApplicationUserPermissions.*;
 
 public enum ApplicationUserRoles {
     STUDENT(new HashSet<>()),

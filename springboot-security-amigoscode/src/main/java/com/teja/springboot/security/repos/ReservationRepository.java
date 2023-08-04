@@ -1,6 +1,6 @@
-package com.example.springbootunittesting.repos;
+package com.teja.springboot.security.repos;
 
-import com.example.springbootunittesting.model.Reservation;
+import com.teja.springboot.security.model.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

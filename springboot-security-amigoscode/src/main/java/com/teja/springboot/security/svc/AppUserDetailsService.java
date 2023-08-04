@@ -1,7 +1,7 @@
-package com.example.springbootunittesting.svc;
+package com.teja.springboot.security.svc;
 
-import com.example.springbootunittesting.model.AppUser;
-import com.example.springbootunittesting.repos.AppUserRepository;
+import com.teja.springboot.security.model.AppUser;
+import com.teja.springboot.security.repos.AppUserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,6 @@
-package com.example.springbootunittesting.security;
+package com.teja.springboot.security.security;
 
-import com.example.springbootunittesting.svc.AppUserDetailsService;
+import com.teja.springboot.security.svc.AppUserDetailsService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

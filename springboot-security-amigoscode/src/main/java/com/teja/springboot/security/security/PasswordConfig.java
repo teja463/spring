@@ -1,4 +1,4 @@
-package com.example.springbootunittesting.security;
+package com.teja.springboot.security.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

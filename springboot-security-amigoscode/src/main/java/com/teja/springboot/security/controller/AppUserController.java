@@ -1,7 +1,7 @@
-package com.example.springbootunittesting.controller;
+package com.teja.springboot.security.controller;
 
-import com.example.springbootunittesting.model.AppUser;
-import com.example.springbootunittesting.repos.AppUserRepository;
+import com.teja.springboot.security.model.AppUser;
+import com.teja.springboot.security.repos.AppUserRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

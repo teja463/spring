@@ -1,4 +1,4 @@
-package com.example.springbootunittesting.security;
+package com.teja.springboot.security.security;
 
 public enum ApplicationUserPermissions {
     STUDENT_READ("student:read"),

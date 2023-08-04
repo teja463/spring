@@ -1,4 +1,4 @@
-package com.example.springbootunittesting.controller;
+package com.teja.springboot.security.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

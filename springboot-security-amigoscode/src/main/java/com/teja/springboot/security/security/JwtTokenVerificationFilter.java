@@ -1,9 +1,11 @@
-package com.example.springbootunittesting.security;
+package com.teja.springboot.security.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -22,11 +24,12 @@ import java.util.stream.Collectors;
 
 public class JwtTokenVerificationFilter extends OncePerRequestFilter {
 
+//    private static final Logger logger = LoggerFactory.getLogger(JwtTokenVerificationFilter.class);
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authorization = request.getHeader("Authorization");
         String token = authorization.replace("Bearer ", "");
-        System.out.println(token);
+        logger.info(token);
         try {
             Claims claims = Jwts.parser()
                     .setSigningKey("secret5k@4534foradsf".getBytes(StandardCharsets.UTF_8))
@@ -37,9 +40,9 @@ public class JwtTokenVerificationFilter extends OncePerRequestFilter {
             List<SimpleGrantedAuthority> authority = roles.stream().map(role -> new SimpleGrantedAuthority(role.get("authority"))).collect(Collectors.toList());
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userName, null, authority);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println(claims);
+            logger.info(claims.toString());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage(), e);
         }
 
         filterChain.doFilter(request, response);

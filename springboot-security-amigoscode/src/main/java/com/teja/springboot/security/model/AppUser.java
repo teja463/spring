@@ -1,4 +1,4 @@
-package com.example.springbootunittesting.model;
+package com.teja.springboot.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
