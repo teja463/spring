@@ -1,4 +1,4 @@
-package com.teja.springboot.security.security;
+package com.teja.springboot.security.config;
 
 import com.teja.springboot.security.interceptor.AuthInterceptor;
 import com.teja.springboot.security.interceptor.LogInterceptor;
