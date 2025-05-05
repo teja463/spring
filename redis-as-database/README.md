@@ -1,0 +1,1 @@
+# Project to use Redis as a Database instead of cache
